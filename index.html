@@ -139,7 +139,7 @@
       object-fit: cover;
       opacity: 0;
       filter: saturate(0.88) contrast(1.05);
-      animation: heroSlideshow 36s infinite;
+      animation: heroSlideshow 24s infinite;
     }
 
     .hero-slide:nth-child(2) { animation-delay: 6s; }
@@ -147,9 +147,9 @@
     .hero-slide:nth-child(4) { animation-delay: 18s; }
 
     @keyframes heroSlideshow {
-      0%, 8% { opacity: 0; transform: scale(1.02); }
-      10%, 16% { opacity: 1; transform: scale(1); }
-      18%, 100% { opacity: 0; transform: scale(1.03); }
+      0%, 3% { opacity: 0; transform: scale(1.02); }
+      5%, 26% { opacity: 1; transform: scale(1); }
+      28%, 100% { opacity: 0; transform: scale(1.03); }
     }
 
     .hero-content {
@@ -345,10 +345,19 @@
 
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(6, minmax(0, 1fr));
       gap: 1px;
       border: 1px solid var(--border);
       background: var(--border);
+    }
+
+    .project-card {
+      grid-column: span 2;
+    }
+
+    .project-card:nth-child(4),
+    .project-card:nth-child(5) {
+      grid-column: span 3;
     }
 
     .project-card {
@@ -379,7 +388,7 @@
     }
 
     .project-card:nth-child(1) .project-thumb { background-image: url("assets/projects/k210/fwd.jpg"); }
-    .project-card:nth-child(2) .project-thumb { background-image: url("assets/projects/underwater-robot/auv2.jpg"); }
+    .project-card:nth-child(2) .project-thumb { background-image: url("assets/projects/underwater-robot/auv4.jpg"), url("assets/projects/underwater-robot/auv2.jpg"); }
     .project-card:nth-child(3) .project-thumb { background-image: url("assets/projects/localisation/fuss.jpg"); }
     .project-card:nth-child(4) .project-thumb { background-image: url("assets/projects/hexapod/hex5.jpg"); }
     .project-card:nth-child(5) .project-thumb { background-image: url("assets/projects/pic-control/pd2.jpg"); }
@@ -855,6 +864,9 @@
       .resume-layout { grid-template-columns: 1fr; }
 
       .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .project-card,
+      .project-card:nth-child(4),
+      .project-card:nth-child(5) { grid-column: span 1; }
       .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .project-detail { grid-template-columns: 1fr; }
       .project-page-grid { grid-template-columns: 1fr; }
@@ -875,6 +887,10 @@
       .skills-grid,
       .projects-grid,
       .contact-grid { grid-template-columns: 1fr; }
+
+      .project-card,
+      .project-card:nth-child(4),
+      .project-card:nth-child(5) { grid-column: auto; }
 
       .project-card { min-height: 315px; }
       .project-overlay { transform: translateY(0); }
@@ -901,6 +917,9 @@
   <main>
     <section id="home" class="hero">
       <div class="hero-media" aria-hidden="true">
+        <video class="hero-slide" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none'">
+          <source src="assets/hero/hexv1.mp4" type="video/mp4" />
+        </video>
         <img class="hero-slide" src="assets/hero/hero-1.jpg" alt="" onerror="this.style.display='none'" />
         <img class="hero-slide" src="assets/hero/fuss.jpg" alt="" onerror="this.style.display='none'" />
         <img class="hero-slide" src="assets/hero/hero-2.jpg" alt="" onerror="this.style.display='none'" />
@@ -1275,8 +1294,9 @@
         tools: ["Raspberry Pi 4B", "BlueOS", "STM32F411", "C", "Assembly", "Python", "RS485", "PWM", "UART"],
         outcome: "The controller architecture supported both video/telemetry experiments and a lean STM32 firmware path for real-time embedded control.",
         media: [
-          { type: "image", src: "assets/projects/underwater-robot/auv2.jpg", alt: "Underwater robot hardware setup" },
-	  { type: "image", src: "assets/projects/underwater-robot/auv4.jpg", alt: "Underwater robot hardware setup" }
+          { type: "image", src: "assets/projects/underwater-robot/auv4.jpg", alt: "Underwater robot final setup" },
+          { type: "video", src: "assets/projects/underwater-robot/auvv1.mp4", alt: "Underwater robot demo" },
+          { type: "image", src: "assets/projects/underwater-robot/auv2.jpg", alt: "Underwater robot hardware setup" }
         ]
       },
       "sensor-fusion-localisation": {
@@ -1307,9 +1327,10 @@
         tools: ["Raspberry Pi", "Servo control", "WiFi", "IMU", "2D LiDAR", "Python"],
         outcome: "The project won a Rs. 2,50,000 staged grant across three phases and demonstrated a working legged robotics prototype.",
         media: [
-          { type: "image", src: "assets/projects/hexapod/hex1.jpg", alt: "Autonomous hexapod robot" },
+          { type: "image", src: "assets/projects/hexapod/hex1.png", alt: "Autonomous hexapod robot" },
           { type: "image", src: "assets/projects/hexapod/hex2.jpg", alt: "Hexapod prototype view" },
           { type: "image", src: "assets/projects/hexapod/hex3.jpg", alt: "Hexapod electronics setup" },
+          { type: "video", src: "assets/projects/hexapod/hexv1.mp4", alt: "Hexapod walking demo" },
           { type: "image", src: "assets/projects/hexapod/hex5.jpg", alt: "Hexapod final build" }
         ]
       },
@@ -1345,6 +1366,10 @@
     }
 
     function mediaMarkup(item) {
+      if (item.type === "video") {
+        return `<video autoplay muted loop playsinline preload="metadata" aria-label="${item.alt}" onerror="this.style.display='none'"><source src="${item.src}" type="video/mp4" />Video: ${item.alt}</video>`;
+      }
+
       return `<img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'" />`;
     }
 
@@ -1369,6 +1394,10 @@
       projectPage.setAttribute("aria-hidden", "false");
       document.body.style.overflow = "hidden";
       projectPage.scrollTop = 0;
+      projectMedia.querySelectorAll("video").forEach((video) => {
+        video.muted = true;
+        video.play().catch(() => {});
+      });
     }
 
     function handleRoute() {
