@@ -487,6 +487,207 @@
       text-transform: uppercase;
     }
 
+    .project-details {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 3rem;
+    }
+
+    .project-detail {
+      scroll-margin-top: 90px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(1.4rem, 4vw, 2.6rem);
+      padding: clamp(1.1rem, 3vw, 2rem);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+    }
+
+    .detail-kicker {
+      color: var(--accent);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.45rem;
+    }
+
+    .project-detail h3 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(1.45rem, 3vw, 2rem);
+      line-height: 1.15;
+      margin-bottom: 0.8rem;
+    }
+
+    .detail-copy {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.75;
+      margin-bottom: 1rem;
+    }
+
+    .detail-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .detail-list li {
+      position: relative;
+      padding: 0.25rem 0 0.25rem 1rem;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+
+    .detail-list li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .media-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+    }
+
+    .media-slot {
+      min-height: 170px;
+      display: grid;
+      place-items: center;
+      padding: 1rem;
+      border: 1px dashed rgba(232, 200, 122, 0.32);
+      border-radius: 6px;
+      background:
+        linear-gradient(135deg, rgba(232, 200, 122, 0.08), rgba(201, 125, 78, 0.06)),
+        var(--surface-2);
+      color: var(--soft);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      text-align: center;
+    }
+
+    .media-slot.wide {
+      grid-column: 1 / -1;
+      min-height: 220px;
+    }
+
+    .media-gallery .wide {
+      grid-column: 1 / -1;
+    }
+
+    .media-gallery img,
+    .media-gallery video {
+      width: 100%;
+      height: 100%;
+      min-height: 170px;
+      display: block;
+      object-fit: cover;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--surface-2);
+    }
+
+    .project-page {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      overflow-y: auto;
+      background: rgba(12, 12, 14, 0.97);
+      backdrop-filter: blur(16px);
+    }
+
+    .project-page.is-open { display: block; }
+
+    .project-page-inner {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+      padding: 5.5rem 0 4rem;
+    }
+
+    .project-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      margin-bottom: 2rem;
+      color: var(--accent);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .project-page-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: start;
+    }
+
+    .project-page h2 {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.35rem, 5vw, 4.4rem);
+      line-height: 1;
+      margin-bottom: 1rem;
+    }
+
+    .project-meta {
+      color: var(--accent);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .project-page p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .project-page h3 {
+      margin: 1.6rem 0 0.75rem;
+      color: var(--text);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .project-page ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .project-page li {
+      position: relative;
+      padding: 0.28rem 0 0.28rem 1rem;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .project-page li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .project-media-note {
+      margin-top: 0.8rem;
+      color: var(--soft);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      line-height: 1.55;
+    }
+
     .timeline-group-title {
       color: var(--soft);
       font-size: 0.72rem;
@@ -639,6 +840,8 @@
       .resume-layout { grid-template-columns: 1fr; }
 
       .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .project-detail { grid-template-columns: 1fr; }
+      .project-page-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 680px) {
@@ -658,6 +861,8 @@
 
       .project-card { min-height: 315px; }
       .project-overlay { transform: translateY(0); }
+      .media-gallery { grid-template-columns: 1fr; }
+      .media-slot.wide { grid-column: auto; }
     }
   </style>
 </head>
@@ -755,65 +960,91 @@
       <p class="section-label">02 - Work</p>
       <h2 class="section-title">Selected<br><em>Projects</em></h2>
       <div class="projects-grid">
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/ai-vision-expansion-board-k210">
           <div class="project-thumb">01</div>
           <div class="project-overlay">
             <div class="project-num">Project 01 / 2025</div>
             <h3 class="project-title">AI-Vision Expansion Board (K210)</h3>
             <p class="project-desc">Production-ready AI board for a STEM robotics kit with real-time face, object, and audio detection. Custom firmware fit a 1.5 MB firmware image plus 3.69 MB model in 16 MB flash.</p>
-            <span class="project-link">View GitHub</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/underwater-robot-controller">
           <div class="project-thumb">02</div>
           <div class="project-overlay">
             <div class="project-num">Project 02 / 2025</div>
             <h3 class="project-title">Underwater Robot Controller</h3>
             <p class="project-desc">Two-phase onboard controller: RPi/BlueOS H.264 video and RS485 telemetry multiplexing, followed by bare-metal STM32F411 control with PWM, UART, and a Python GUI.</p>
-            <span class="project-link">View GitHub</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/sensor-fusion-localisation">
           <div class="project-thumb">03</div>
           <div class="project-overlay">
             <div class="project-num">Project 03 / 2025</div>
             <h3 class="project-title">Sensor Fusion for Real-Time Localisation</h3>
             <p class="project-desc">Fusion pipeline combining encoder odometry and BNO055 IMU data on a wheeled robot, with EKF integration and C++/Python tools for automated testing and live visualisation.</p>
-            <span class="project-link">View GitHub</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/autonomous-hexapod-robot">
           <div class="project-thumb">04</div>
           <div class="project-overlay">
             <div class="project-num">Project 04 / 2024</div>
             <h3 class="project-title">Autonomous Hexapod Robot</h3>
             <p class="project-desc">18-DOF hexapod that won a Rs. 2,50,000 staged grant across three phases, with WiFi gait control, RPi camera feed, IMU monitoring, and LiDAR streaming.</p>
-            <span class="project-link">View GitHub</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/pd-control-pic-microcontroller">
           <div class="project-thumb">05</div>
           <div class="project-overlay">
             <div class="project-num">Project 05 / 2023</div>
             <h3 class="project-title">PD Control on PIC Microcontroller</h3>
             <p class="project-desc">PD control algorithm on PIC18F regulating output against a configurable setpoint, validated with oscilloscope measurements and embedded firmware testing.</p>
-            <span class="project-link">View GitHub</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
 
-        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+        <a class="project-card" href="#/projects/next-embedded-project">
           <div class="project-thumb">06</div>
           <div class="project-overlay">
             <div class="project-num">Project 06 / Coming Soon</div>
             <h3 class="project-title">Next Embedded Project</h3>
             <p class="project-desc">A placeholder slot for the next public case study. Replace this with a repo link, demo video, or write-up when the project is ready.</p>
-            <span class="project-link">Update Later</span>
+            <span class="project-link">View Details</span>
           </div>
         </a>
+      </div>
+    </section>
+
+    <section class="project-page" id="project-page" aria-hidden="true">
+      <div class="project-page-inner">
+        <a class="project-back" href="#projects">Back to Projects</a>
+        <div class="project-page-grid">
+          <div>
+            <div class="project-meta" id="project-page-meta"></div>
+            <h2 id="project-page-title">Project Title</h2>
+            <p id="project-page-summary"></p>
+            <h3>What I Built</h3>
+            <ul id="project-page-built"></ul>
+            <h3>Tools & Stack</h3>
+            <ul id="project-page-tools"></ul>
+            <h3>Outcome</h3>
+            <p id="project-page-outcome"></p>
+          </div>
+
+          <div>
+            <div class="media-gallery" id="project-page-media"></div>
+            <p class="project-media-note">
+              Add files inside <strong>assets/projects/project-folder/</strong>, then update the matching media paths in the script at the bottom of this file.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -978,5 +1209,172 @@
       <a href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">GitHub</a>
     </p>
   </footer>
+
+  <script>
+    const projects = {
+      "ai-vision-expansion-board-k210": {
+        title: "AI-Vision Expansion Board (K210)",
+        meta: "Project 01 / 2025 / Embedded AI",
+        summary: "Production-ready AI expansion board for a STEM robotics kit, built around the Kendryte K210 for real-time face, object, and audio detection.",
+        built: [
+          "Prepared a firmware build that fit a 1.5 MB firmware image and 3.69 MB model inside 16 MB flash.",
+          "Configured UART, SPI, and I2S peripheral flows for camera, microphone, LCD, DAC, and amplifier integration.",
+          "Brought the board to a deployable handoff state for use in robotics education kits."
+        ],
+        tools: ["Kendryte K210", "MaixPy", "C", "UART", "SPI", "I2S", "Firmware build system"],
+        outcome: "The board was handed off as a working AI-vision module, with firmware size constraints solved and core detection flows validated.",
+        media: [
+          { type: "image", src: "assets/projects/k210/board-photo.jpg", alt: "K210 expansion board photo" },
+          { type: "image", src: "assets/projects/k210/firmware-test.jpg", alt: "Firmware testing setup" },
+          { type: "video", src: "assets/projects/k210/demo.mp4", alt: "K210 detection demo" }
+        ]
+      },
+      "underwater-robot-controller": {
+        title: "Underwater Robot Controller",
+        meta: "Project 02 / 2025 / Robotics Control",
+        summary: "Two-phase onboard controller for an underwater robot, moving from Raspberry Pi and BlueOS experimentation to a custom STM32F411-based control solution.",
+        built: [
+          "Modified BlueOS flow to transmit H.264 video packets over RS485 alongside telemetry.",
+          "Designed custom framing for IMU and pressure data transmission.",
+          "Built bare-metal STM32F411 firmware and a Python GUI for real-time control and telemetry."
+        ],
+        tools: ["Raspberry Pi 4B", "BlueOS", "STM32F411", "C", "Assembly", "Python", "RS485", "PWM", "UART"],
+        outcome: "The controller architecture supported both video/telemetry experiments and a lean STM32 firmware path for real-time embedded control.",
+        media: [
+          { type: "image", src: "assets/projects/underwater-robot/controller.jpg", alt: "Underwater robot controller hardware" },
+          { type: "image", src: "assets/projects/underwater-robot/gui.jpg", alt: "Python control GUI" },
+          { type: "video", src: "assets/projects/underwater-robot/test-run.mp4", alt: "Underwater robot test video" }
+        ]
+      },
+      "sensor-fusion-localisation": {
+        title: "Sensor Fusion for Real-Time Localisation",
+        meta: "Project 03 / 2025 / Sensor Fusion",
+        summary: "Real-time localisation pipeline combining encoder odometry and BNO055 IMU data for a wheeled robot.",
+        built: [
+          "Combined wheel encoder and IMU signals into a practical localisation pipeline.",
+          "Integrated EKF-style state estimation into a C++ and Python toolchain.",
+          "Built automated tests and live state visualisation for tuning and validation."
+        ],
+        tools: ["BNO055", "Wheel encoders", "C++", "Python", "EKF", "Robotics testing"],
+        outcome: "The system improved localisation visibility and created a repeatable test workflow for sensor fusion experiments.",
+        media: [
+          { type: "image", src: "assets/projects/localisation/robot.jpg", alt: "Localisation robot platform" },
+          { type: "image", src: "assets/projects/localisation/visualisation.jpg", alt: "State visualisation screenshot" },
+          { type: "video", src: "assets/projects/localisation/demo.mp4", alt: "Localisation demo video" }
+        ]
+      },
+      "autonomous-hexapod-robot": {
+        title: "Autonomous Hexapod Robot",
+        meta: "Project 04 / 2024 / Legged Robotics",
+        summary: "18-DOF autonomous hexapod robot with WiFi gait control, camera feed, IMU monitoring, and LiDAR point-cloud streaming.",
+        built: [
+          "Developed WiFi-based gait control for an 18-DOF hexapod platform.",
+          "Integrated Raspberry Pi camera feed and IMU monitoring.",
+          "Streamed 2D LiDAR point-cloud data over the network for environment perception."
+        ],
+        tools: ["Raspberry Pi", "Servo control", "WiFi", "IMU", "2D LiDAR", "Python"],
+        outcome: "The project won a Rs. 2,50,000 staged grant across three phases and demonstrated a working legged robotics prototype.",
+        media: [
+          { type: "image", src: "assets/projects/hexapod/robot.jpg", alt: "Autonomous hexapod robot" },
+          { type: "image", src: "assets/projects/hexapod/lidar.jpg", alt: "LiDAR streaming view" },
+          { type: "video", src: "assets/projects/hexapod/walking-demo.mp4", alt: "Hexapod walking demo" }
+        ]
+      },
+      "pd-control-pic-microcontroller": {
+        title: "PD Control on PIC Microcontroller",
+        meta: "Project 05 / 2023 / Control Systems",
+        summary: "PD control implementation on a PIC18F microcontroller, regulating output against a configurable setpoint.",
+        built: [
+          "Implemented a PD control algorithm on PIC18F firmware.",
+          "Validated control response using oscilloscope measurements.",
+          "Tuned controller behavior against configurable setpoints."
+        ],
+        tools: ["PIC18F", "MPLAB", "C", "Oscilloscope", "Control theory"],
+        outcome: "The project translated classroom control theory into measured embedded behavior on real hardware.",
+        media: [
+          { type: "image", src: "assets/projects/pic-control/circuit.jpg", alt: "PIC control circuit" },
+          { type: "image", src: "assets/projects/pic-control/scope.jpg", alt: "Oscilloscope validation" },
+          { type: "video", src: "assets/projects/pic-control/demo.mp4", alt: "PD controller demo" }
+        ]
+      },
+      "next-embedded-project": {
+        title: "Next Embedded Project",
+        meta: "Project 06 / Coming Soon",
+        summary: "Use this slot for your next polished project write-up, demo video, or hardware case study.",
+        built: [
+          "Replace this placeholder with the core problem you solved.",
+          "Add the technical decisions that make the project interesting.",
+          "Show photos, test data, diagrams, or a short demo video."
+        ],
+        tools: ["Add tools here"],
+        outcome: "Replace this with the real outcome, result, or lesson learned.",
+        media: [
+          { type: "image", src: "assets/projects/next/photo-1.jpg", alt: "Project photo placeholder" },
+          { type: "image", src: "assets/projects/next/photo-2.jpg", alt: "Project photo placeholder" },
+          { type: "video", src: "assets/projects/next/demo.mp4", alt: "Project video placeholder" }
+        ]
+      }
+    };
+
+    const projectPage = document.getElementById("project-page");
+    const projectTitle = document.getElementById("project-page-title");
+    const projectMeta = document.getElementById("project-page-meta");
+    const projectSummary = document.getElementById("project-page-summary");
+    const projectBuilt = document.getElementById("project-page-built");
+    const projectTools = document.getElementById("project-page-tools");
+    const projectOutcome = document.getElementById("project-page-outcome");
+    const projectMedia = document.getElementById("project-page-media");
+
+    function listItems(items) {
+      return items.map((item) => `<li>${item}</li>`).join("");
+    }
+
+    function mediaMarkup(item, index) {
+      const wide = index === 2 ? " wide" : "";
+      if (item.type === "video") {
+        return `<video class="${wide.trim()}" controls preload="metadata" poster="${item.poster || ""}"><source src="${item.src}" type="video/mp4" />Video: ${item.alt}</video>`;
+      }
+
+      return `<img src="${item.src}" alt="${item.alt}" onerror="this.outerHTML='<div class=&quot;media-slot${wide}&quot;>${item.alt}<br>${item.src}</div>'" />`;
+    }
+
+    function openProject(slug) {
+      const project = projects[slug];
+      if (!project) {
+        projectPage.classList.remove("is-open");
+        projectPage.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+        return;
+      }
+
+      document.title = `${project.title} - Aryan Thakar`;
+      projectTitle.textContent = project.title;
+      projectMeta.textContent = project.meta;
+      projectSummary.textContent = project.summary;
+      projectBuilt.innerHTML = listItems(project.built);
+      projectTools.innerHTML = listItems(project.tools);
+      projectOutcome.textContent = project.outcome;
+      projectMedia.innerHTML = project.media.map(mediaMarkup).join("");
+      projectPage.classList.add("is-open");
+      projectPage.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+      projectPage.scrollTop = 0;
+    }
+
+    function handleRoute() {
+      const match = location.hash.match(/^#\/projects\/([a-z0-9-]+)$/);
+      if (match) {
+        openProject(match[1]);
+      } else {
+        document.title = "Aryan Thakar - Portfolio";
+        projectPage.classList.remove("is-open");
+        projectPage.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+    }
+
+    window.addEventListener("hashchange", handleRoute);
+    handleRoute();
+  </script>
 </body>
 </html>
