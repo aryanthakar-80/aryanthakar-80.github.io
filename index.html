@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Project portfolio of Aryan Thakar, focused on embedded systems, robotics, control, firmware, and electronics engineering." />
+  <meta property="og:title" content="Aryan Thakar - Embedded Systems Portfolio" />
+  <meta property="og:description" content="Selected embedded systems, robotics, firmware, and control projects by Aryan Thakar." />
+  <meta property="og:type" content="website" />
+  <title>Aryan Thakar - Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0c0c0e;
+      --surface: #151517;
+      --surface-2: #1d1d21;
+      --border: #2d2d33;
+      --accent: #e8c87a;
+      --accent-2: #c97d4e;
+      --text: #f3efe7;
+      --muted: #a4a1a0;
+      --soft: #77747a;
+      --shadow: rgba(0, 0, 0, 0.42);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "DM Sans", Arial, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; }
+
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem clamp(1.2rem, 4vw, 4rem);
+      background: rgba(12, 12, 14, 0.82);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: clamp(1rem, 3vw, 2.2rem);
+      align-items: center;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links a {
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.74rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 180ms ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible { color: var(--accent); }
+
+    .hero {
+      min-height: 100svh;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: end;
+      padding: 8rem clamp(1.2rem, 4vw, 4rem) 5rem;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      background:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 64px 64px;
+      opacity: 0.25;
+      mask-image: linear-gradient(to bottom, black, transparent 84%);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        radial-gradient(ellipse at 72% 36%, rgba(232, 200, 122, 0.13), transparent 42%),
+        radial-gradient(ellipse at 16% 76%, rgba(201, 125, 78, 0.12), transparent 40%);
+    }
+
+    .eyebrow,
+    .section-label,
+    .project-num,
+    .timeline-group-title,
+    .skill-category {
+      font-family: "DM Mono", Consolas, monospace;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow {
+      color: var(--accent);
+      font-size: 0.76rem;
+      margin-bottom: 1rem;
+    }
+
+    h1,
+    h2,
+    h3,
+    p { margin: 0; }
+
+    h1 {
+      max-width: 820px;
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(3.6rem, 10vw, 8.4rem);
+      font-weight: 900;
+      line-height: 0.92;
+      letter-spacing: 0;
+      margin-bottom: 1.45rem;
+    }
+
+    h1 em,
+    .section-title em { color: var(--accent); font-style: italic; }
+
+    .hero-sub {
+      max-width: 600px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.15rem);
+      margin-bottom: 2.4rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      gap: 0.55rem;
+      padding: 0.72rem 1.35rem;
+      border: 2px solid var(--border);
+      border-radius: 4px;
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+    }
+
+    .btn:hover,
+    .btn:focus-visible {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: #111113;
+    }
+
+    .btn-primary:hover,
+    .btn-primary:focus-visible {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .hero-visual {
+      position: relative;
+      align-self: center;
+      min-height: 420px;
+    }
+
+    .board {
+      position: absolute;
+      inset: 2rem 0 0 auto;
+      width: min(100%, 430px);
+      aspect-ratio: 0.82;
+      border: 1px solid rgba(232, 200, 122, 0.28);
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 22% 18%, rgba(232, 200, 122, 0.22) 0 4px, transparent 5px),
+        radial-gradient(circle at 78% 72%, rgba(201, 125, 78, 0.24) 0 5px, transparent 6px),
+        linear-gradient(135deg, rgba(36, 52, 51, 0.95), rgba(24, 25, 31, 0.98));
+      box-shadow: 0 28px 80px var(--shadow);
+      overflow: hidden;
+    }
+
+    .board::before {
+      content: "";
+      position: absolute;
+      inset: 12%;
+      border: 1px solid rgba(232, 200, 122, 0.22);
+      background:
+        linear-gradient(90deg, transparent 0 17%, rgba(232, 200, 122, 0.24) 17% 18%, transparent 18% 100%),
+        linear-gradient(transparent 0 27%, rgba(232, 200, 122, 0.2) 27% 28%, transparent 28% 100%);
+    }
+
+    .board::after {
+      content: "K210  STM32  RS485  IMU  PWM";
+      position: absolute;
+      right: 1rem;
+      bottom: 1rem;
+      max-width: 220px;
+      color: rgba(243, 239, 231, 0.42);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.66rem;
+      letter-spacing: 0.14em;
+      text-align: right;
+    }
+
+    .chip {
+      position: absolute;
+      left: 50%;
+      top: 42%;
+      width: 130px;
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(232, 200, 122, 0.4);
+      border-radius: 6px;
+      background: #111317;
+      box-shadow: inset 0 0 0 8px #191c20, 0 0 44px rgba(232, 200, 122, 0.14);
+    }
+
+    .pin-row {
+      position: absolute;
+      left: -18px;
+      right: -18px;
+      height: 6px;
+      background: repeating-linear-gradient(90deg, rgba(232, 200, 122, 0.7) 0 5px, transparent 5px 12px);
+    }
+
+    .pin-top { top: 20px; }
+    .pin-bottom { bottom: 20px; }
+
+    section {
+      padding: 6.5rem clamp(1.2rem, 4vw, 4rem);
+    }
+
+    .section-label {
+      color: var(--accent);
+      font-size: 0.72rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: clamp(2.1rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: 0;
+      margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .summary,
+    .resume { background: var(--surface); }
+
+    .summary-grid,
+    .resume-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: clamp(2rem, 6vw, 4.8rem);
+      align-items: start;
+    }
+
+    .summary-text {
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.9;
+    }
+
+    .summary-text strong { color: var(--text); font-weight: 600; }
+
+    .career-path { margin-top: 2.5rem; }
+
+    .career-path h3 {
+      color: var(--soft);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .career-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      padding: 1.05rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .step-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      margin-top: 0.5rem;
+      background: var(--border);
+    }
+
+    .career-step.active .step-dot {
+      background: var(--accent);
+      box-shadow: 0 0 12px rgba(232, 200, 122, 0.6);
+    }
+
+    .step-title { font-weight: 600; }
+    .step-desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+
+    .sw-grid,
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .sw-card,
+    .skill-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.5rem;
+    }
+
+    .sw-card h3 {
+      margin-bottom: 0.9rem;
+      color: var(--accent);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .sw-card ul,
+    .timeline ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .sw-card li {
+      position: relative;
+      padding: 0.42rem 0 0.42rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.91rem;
+    }
+
+    .sw-card li:last-child { border-bottom: 0; }
+    .sw-card li::before {
+      content: ">";
+      position: absolute;
+      left: 0;
+      color: var(--accent-2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1px;
+      border: 1px solid var(--border);
+      background: var(--border);
+    }
+
+    .project-card {
+      min-height: 340px;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+      background: #17171c;
+      text-decoration: none;
+    }
+
+    .project-thumb {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(243, 239, 231, 0.2);
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 4.8rem;
+      font-weight: 900;
+      transition: transform 320ms ease, filter 320ms ease;
+    }
+
+    .project-thumb::before,
+    .project-thumb::after {
+      content: "";
+      position: absolute;
+      inset: 16%;
+      border: 1px solid rgba(232, 200, 122, 0.18);
+    }
+
+    .project-thumb::after {
+      inset: 28% 18%;
+      border-style: dashed;
+      transform: rotate(-8deg);
+    }
+
+    .project-card:nth-child(1) .project-thumb { background: linear-gradient(135deg, #1a1d26, #243438); }
+    .project-card:nth-child(2) .project-thumb { background: linear-gradient(135deg, #171c23, #273140); }
+    .project-card:nth-child(3) .project-thumb { background: linear-gradient(135deg, #161d1c, #26342f); }
+    .project-card:nth-child(4) .project-thumb { background: linear-gradient(135deg, #1f1824, #31233c); }
+    .project-card:nth-child(5) .project-thumb { background: linear-gradient(135deg, #201b18, #3b3022); }
+    .project-card:nth-child(6) .project-thumb { background: linear-gradient(135deg, #181d1e, #2c3338); }
+
+    .project-overlay {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 54%;
+      padding: 1.4rem;
+      background: linear-gradient(transparent, rgba(8, 8, 10, 0.96) 28%);
+      transform: translateY(calc(100% - 5.2rem));
+      transition: transform 320ms ease;
+    }
+
+    .project-card:hover .project-overlay,
+    .project-card:focus-visible .project-overlay { transform: translateY(0); }
+    .project-card:hover .project-thumb,
+    .project-card:focus-visible .project-thumb { transform: scale(1.045); filter: saturate(1.08); }
+
+    .project-num {
+      color: var(--accent);
+      font-size: 0.66rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .project-title {
+      font-family: "Playfair Display", Georgia, serif;
+      font-size: 1.12rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .project-desc {
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.55;
+      margin-top: 0.65rem;
+    }
+
+    .project-link {
+      display: inline-flex;
+      margin-top: 0.9rem;
+      color: var(--accent);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .timeline-group-title {
+      color: var(--soft);
+      font-size: 0.72rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .tl-line {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .tl-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+      margin-top: 0.45rem;
+      background: var(--accent);
+    }
+
+    .tl-line-bar {
+      width: 1px;
+      flex: 1;
+      min-height: 60px;
+      margin-top: 6px;
+      background: var(--border);
+    }
+
+    .tl-date {
+      color: var(--accent-2);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .tl-role { font-size: 0.98rem; font-weight: 600; }
+    .tl-org { color: var(--muted); font-size: 0.88rem; margin-bottom: 0.55rem; }
+
+    .tl-bullets li {
+      position: relative;
+      padding: 0.16rem 0 0.16rem 1rem;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .tl-bullets li::before {
+      content: "-";
+      position: absolute;
+      left: 0;
+      color: var(--soft);
+    }
+
+    .resume-download { margin-top: 1rem; }
+
+    .skill-card {
+      position: relative;
+      overflow: hidden;
+      transition: border-color 180ms ease, transform 180ms ease;
+    }
+
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 auto auto 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 220ms ease;
+    }
+
+    .skill-card:hover {
+      border-color: rgba(232, 200, 122, 0.55);
+      transform: translateY(-2px);
+    }
+
+    .skill-card:hover::before { transform: scaleX(1); }
+    .skill-icon { font-size: 1.9rem; margin-bottom: 0.9rem; }
+    .skill-category { color: var(--accent); font-size: 0.7rem; margin-bottom: 0.65rem; }
+    .skill-name { font-family: "Playfair Display", Georgia, serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .skill-tag {
+      padding: 0.3rem 0.65rem;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: #16161a;
+      color: var(--muted);
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+    }
+
+    footer {
+      padding: 2rem clamp(1.2rem, 4vw, 4rem);
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+    }
+
+    footer a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    footer a:hover,
+    footer a:focus-visible { text-decoration: underline; }
+
+    ::selection { background: rgba(232, 200, 122, 0.28); }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+        align-items: end;
+        padding-top: 7rem;
+      }
+
+      .hero-visual {
+        min-height: 280px;
+        order: -1;
+      }
+
+      .board {
+        inset: 0 auto auto 0;
+        width: min(100%, 360px);
+      }
+
+      .summary-grid,
+      .resume-layout { grid-template-columns: 1fr; }
+
+      .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      nav { padding: 0.9rem 1.05rem; }
+      .nav-links { display: none; }
+
+      .hero,
+      section { padding-left: 1.05rem; padding-right: 1.05rem; }
+
+      .hero { padding-bottom: 3.5rem; }
+      .hero-actions { align-items: stretch; }
+      .btn { width: 100%; }
+
+      .sw-grid,
+      .skills-grid,
+      .projects-grid { grid-template-columns: 1fr; }
+
+      .project-card { min-height: 315px; }
+      .project-overlay { transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <nav aria-label="Primary navigation">
+    <a href="#home" class="nav-logo">AT</a>
+    <ul class="nav-links">
+      <li><a href="#summary">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#skills">Skills</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home" class="hero">
+      <div>
+        <p class="eyebrow">Electronics & Embedded Systems Portfolio</p>
+        <h1>Aryan<br><em>Thakar</em></h1>
+        <p class="hero-sub">Building intelligent embedded systems where hardware, firmware, and robotics converge to solve real-world problems.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="mailto:aryan.thakar@hotmail.com" class="btn">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-visual" aria-hidden="true">
+        <div class="board">
+          <div class="chip">
+            <div class="pin-row pin-top"></div>
+            <div class="pin-row pin-bottom"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="summary">
+      <p class="section-label">01 - About</p>
+      <h2 class="section-title">A little<br><em>about me</em></h2>
+      <div class="summary-grid">
+        <div>
+          <p class="summary-text">
+            I'm an <strong>Electronics & Instrumentation Engineering</strong> student at Nirma University with a passion for building things that work in the real world, from bare-metal firmware on STM32 microcontrollers to AI-vision expansion boards deployed in STEM robotics kits.
+            <br><br>
+            I thrive at the intersection of <strong>embedded systems, robotics, and control theory</strong>, writing low-level drivers one day and tuning sensor fusion algorithms the next. If it has a microcontroller, a motor, or a sensor, I'm interested.
+          </p>
+
+          <div class="career-path">
+            <h3>Career Progression</h3>
+            <div class="career-step">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Embedded Systems Student</div>
+                <div class="step-desc">Learning microcontrollers, protocols, and control theory at Nirma University.</div>
+              </div>
+            </div>
+            <div class="career-step active">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">I am here! - Junior Embedded Engineer Intern</div>
+                <div class="step-desc">Production firmware and AI-vision boards at STEMbotix PVT. LTD.</div>
+              </div>
+            </div>
+            <div class="career-step">
+              <div class="step-dot"></div>
+              <div>
+                <div class="step-title">Robotics / Embedded Systems Engineer</div>
+                <div class="step-desc">Building autonomous systems with full-stack hardware and firmware ownership.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="sw-grid">
+          <article class="sw-card">
+            <h3>Strengths</h3>
+            <ul>
+              <li>Digs deep into datasheets until things work.</li>
+              <li>Comfortable from bare-metal C to high-level Python.</li>
+              <li>Iterates fast through prototype, test, and ship cycles.</li>
+            </ul>
+          </article>
+          <article class="sw-card">
+            <h3>Current Edges</h3>
+            <ul>
+              <li>Scope creep: every project wants one more feature.</li>
+              <li>Learning to budget more time for PCB spins.</li>
+              <li>Still tempted to debug hardware at 2 AM.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <p class="section-label">02 - Work</p>
+      <h2 class="section-title">Selected<br><em>Projects</em></h2>
+      <div class="projects-grid">
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">01</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 01 / 2025</div>
+            <h3 class="project-title">AI-Vision Expansion Board (K210)</h3>
+            <p class="project-desc">Production-ready AI board for a STEM robotics kit with real-time face, object, and audio detection. Custom firmware fit a 1.5 MB firmware image plus 3.69 MB model in 16 MB flash.</p>
+            <span class="project-link">View GitHub</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">02</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 02 / 2025</div>
+            <h3 class="project-title">Underwater Robot Controller</h3>
+            <p class="project-desc">Two-phase onboard controller: RPi/BlueOS H.264 video and RS485 telemetry multiplexing, followed by bare-metal STM32F411 control with PWM, UART, and a Python GUI.</p>
+            <span class="project-link">View GitHub</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">03</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 03 / 2025</div>
+            <h3 class="project-title">Sensor Fusion for Real-Time Localisation</h3>
+            <p class="project-desc">Fusion pipeline combining encoder odometry and BNO055 IMU data on a wheeled robot, with EKF integration and C++/Python tools for automated testing and live visualisation.</p>
+            <span class="project-link">View GitHub</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">04</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 04 / 2024</div>
+            <h3 class="project-title">Autonomous Hexapod Robot</h3>
+            <p class="project-desc">18-DOF hexapod that won a Rs. 2,50,000 staged grant across three phases, with WiFi gait control, RPi camera feed, IMU monitoring, and LiDAR streaming.</p>
+            <span class="project-link">View GitHub</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">05</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 05 / 2023</div>
+            <h3 class="project-title">PD Control on PIC Microcontroller</h3>
+            <p class="project-desc">PD control algorithm on PIC18F regulating output against a configurable setpoint, validated with oscilloscope measurements and embedded firmware testing.</p>
+            <span class="project-link">View GitHub</span>
+          </div>
+        </a>
+
+        <a class="project-card" href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">
+          <div class="project-thumb">06</div>
+          <div class="project-overlay">
+            <div class="project-num">Project 06 / Coming Soon</div>
+            <h3 class="project-title">Next Embedded Project</h3>
+            <p class="project-desc">A placeholder slot for the next public case study. Replace this with a repo link, demo video, or write-up when the project is ready.</p>
+            <span class="project-link">Update Later</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="resume" class="resume">
+      <p class="section-label">03 - Experience</p>
+      <h2 class="section-title">Resume &<br><em>Education</em></h2>
+      <div class="resume-layout">
+        <div class="timeline">
+          <div class="timeline-group-title">Work Experience</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">Dec 2025 - Apr 2026</div>
+              <h3 class="tl-role">Junior Embedded Engineer Intern</h3>
+              <div class="tl-org">STEMbotix PVT. LTD.</div>
+              <ul class="tl-bullets">
+                <li>Developed a production-ready AI-vision expansion board using the Kendryte K210.</li>
+                <li>Modified the Makefile to strip unused MaixPy modules and solve a critical flash constraint.</li>
+                <li>Configured UART, SPI, and I2S peripherals for camera, microphone, LCD, DAC, and amplifier workflows.</li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">May 2025 - Jul 2025</div>
+              <h3 class="tl-role">Summer Intern</h3>
+              <div class="tl-org">iCreate - International Centre for Entrepreneurship & Technology</div>
+              <ul class="tl-bullets">
+                <li>Engineered a two-phase onboard controller for an underwater robot.</li>
+                <li>Modified BlueOS to transmit H.264 video packets over RS485 alongside IMU and pressure telemetry.</li>
+                <li>Developed bare-metal C and Assembly firmware for STM32F411 with a Python GUI for live telemetry and control.</li>
+              </ul>
+            </div>
+          </article>
+
+          <a href="resume.pdf" class="btn resume-download">Download Resume PDF</a>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-group-title">Education</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-date">Sep 2022 - Jun 2026</div>
+              <h3 class="tl-role">B.Tech - Electronics & Instrumentation Engineering</h3>
+              <div class="tl-org">Nirma University, Institute of Technology / Ahmedabad, India</div>
+              <ul class="tl-bullets">
+                <li>CGPA: 7.68</li>
+                <li>Coursework: Control Theory, Signals & Systems, Robotics, STM32 Embedded System Design, Fuzzy Control Theory, and Data Communication.</li>
+              </ul>
+            </div>
+          </article>
+
+          <div class="timeline-group-title" style="margin-top: 2.5rem;">Achievements</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">2024</div>
+              <h3 class="tl-role">Runners-up - Secure Meters' Vikram Awards</h3>
+              <div class="tl-org">Industry Recognition</div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">2024</div>
+              <h3 class="tl-role">Runners-up - Open Automation Challenge 2024</h3>
+              <div class="tl-org">Competition</div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-date">2025</div>
+              <h3 class="tl-role">Publication - Springer Nature</h3>
+              <div class="tl-org">Recent Advances in Materials and Manufacturing Science</div>
+              <ul class="tl-bullets">
+                <li>"A Sustainable Approach for Plastic Waste Management and Recycling."</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <p class="section-label">04 - Expertise</p>
+      <h2 class="section-title">Skills &<br><em>Toolbox</em></h2>
+      <div class="skills-grid">
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">IC</div>
+          <div class="skill-category">Category 01</div>
+          <h3 class="skill-name">Embedded Systems</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">STM32</span>
+            <span class="skill-tag">ESP32</span>
+            <span class="skill-tag">Raspberry Pi</span>
+            <span class="skill-tag">Kendryte K210</span>
+            <span class="skill-tag">PIC18F</span>
+            <span class="skill-tag">Arduino</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">C++</div>
+          <div class="skill-category">Category 02</div>
+          <h3 class="skill-name">Programming</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">C</span>
+            <span class="skill-tag">C++</span>
+            <span class="skill-tag">Python</span>
+            <span class="skill-tag">Assembly</span>
+            <span class="skill-tag">MicroPython</span>
+            <span class="skill-tag">Shell</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">IO</div>
+          <div class="skill-category">Category 03</div>
+          <h3 class="skill-name">Protocols & Comms</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">UART</span>
+            <span class="skill-tag">I2C</span>
+            <span class="skill-tag">SPI</span>
+            <span class="skill-tag">RS485</span>
+            <span class="skill-tag">I2S</span>
+            <span class="skill-tag">Ethernet</span>
+          </div>
+        </article>
+
+        <article class="skill-card">
+          <div class="skill-icon" aria-hidden="true">EDA</div>
+          <div class="skill-category">Category 04</div>
+          <h3 class="skill-name">Tools & Simulation</h3>
+          <div class="skill-tags">
+            <span class="skill-tag">STM32CubeIDE</span>
+            <span class="skill-tag">MATLAB</span>
+            <span class="skill-tag">Simulink</span>
+            <span class="skill-tag">KiCad</span>
+            <span class="skill-tag">MPLAB</span>
+            <span class="skill-tag">MaixPy</span>
+            <span class="skill-tag">ST-Link</span>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Copyright 2026 Aryan Thakar /
+      <a href="mailto:aryan.thakar@hotmail.com">Email</a> /
+      <a href="https://linkedin.com/in/aryan-thakar-88812a257" target="_blank" rel="noreferrer">LinkedIn</a> /
+      <a href="https://github.com/aryanthakar-80" target="_blank" rel="noreferrer">GitHub</a>
+    </p>
+  </footer>
+</body>
+</html>
