@@ -64,7 +64,7 @@
 
     .nav-links {
       display: flex;
-      gap: clamp(1rem, 3vw, 2.2rem);
+      gap: clamp(0.75rem, 1.8vw, 1.45rem);
       align-items: center;
       list-style: none;
       margin: 0;
@@ -73,8 +73,8 @@
 
     .nav-links a {
       font-family: "DM Mono", Consolas, monospace;
-      font-size: 0.74rem;
-      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--muted);
       text-decoration: none;
@@ -87,9 +87,7 @@
     .hero {
       min-height: 100svh;
       position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
-      gap: clamp(2rem, 6vw, 5rem);
+      display: flex;
       align-items: end;
       padding: 8rem clamp(1.2rem, 4vw, 4rem) 5rem;
       isolation: isolate;
@@ -202,74 +200,6 @@
       color: var(--accent);
     }
 
-    .hero-visual {
-      position: relative;
-      align-self: center;
-      min-height: 420px;
-    }
-
-    .board {
-      position: absolute;
-      inset: 2rem 0 0 auto;
-      width: min(100%, 430px);
-      aspect-ratio: 0.82;
-      border: 1px solid rgba(232, 200, 122, 0.28);
-      border-radius: 8px;
-      background:
-        radial-gradient(circle at 22% 18%, rgba(232, 200, 122, 0.22) 0 4px, transparent 5px),
-        radial-gradient(circle at 78% 72%, rgba(201, 125, 78, 0.24) 0 5px, transparent 6px),
-        linear-gradient(135deg, rgba(36, 52, 51, 0.95), rgba(24, 25, 31, 0.98));
-      box-shadow: 0 28px 80px var(--shadow);
-      overflow: hidden;
-    }
-
-    .board::before {
-      content: "";
-      position: absolute;
-      inset: 12%;
-      border: 1px solid rgba(232, 200, 122, 0.22);
-      background:
-        linear-gradient(90deg, transparent 0 17%, rgba(232, 200, 122, 0.24) 17% 18%, transparent 18% 100%),
-        linear-gradient(transparent 0 27%, rgba(232, 200, 122, 0.2) 27% 28%, transparent 28% 100%);
-    }
-
-    .board::after {
-      content: "K210  STM32  RS485  IMU  PWM";
-      position: absolute;
-      right: 1rem;
-      bottom: 1rem;
-      max-width: 220px;
-      color: rgba(243, 239, 231, 0.42);
-      font-family: "DM Mono", Consolas, monospace;
-      font-size: 0.66rem;
-      letter-spacing: 0.14em;
-      text-align: right;
-    }
-
-    .chip {
-      position: absolute;
-      left: 50%;
-      top: 42%;
-      width: 130px;
-      aspect-ratio: 1;
-      transform: translate(-50%, -50%);
-      border: 1px solid rgba(232, 200, 122, 0.4);
-      border-radius: 6px;
-      background: #111317;
-      box-shadow: inset 0 0 0 8px #191c20, 0 0 44px rgba(232, 200, 122, 0.14);
-    }
-
-    .pin-row {
-      position: absolute;
-      left: -18px;
-      right: -18px;
-      height: 6px;
-      background: repeating-linear-gradient(90deg, rgba(232, 200, 122, 0.7) 0 5px, transparent 5px 12px);
-    }
-
-    .pin-top { top: 20px; }
-    .pin-bottom { bottom: 20px; }
-
     section {
       padding: 6.5rem clamp(1.2rem, 4vw, 4rem);
     }
@@ -292,6 +222,9 @@
     .summary,
     .resume { background: var(--surface); }
 
+    .education,
+    .pdf-section { background: var(--surface); }
+
     .summary-grid,
     .resume-layout {
       display: grid;
@@ -308,43 +241,13 @@
 
     .summary-text strong { color: var(--text); font-weight: 600; }
 
-    .career-path { margin-top: 2.5rem; }
-
-    .career-path h3 {
-      color: var(--soft);
-      font-family: "DM Mono", Consolas, monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .career-step {
-      display: grid;
-      grid-template-columns: auto 1fr;
-      gap: 1rem;
-      padding: 1.05rem 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .step-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      margin-top: 0.5rem;
-      background: var(--border);
-    }
-
-    .career-step.active .step-dot {
-      background: var(--accent);
-      box-shadow: 0 0 12px rgba(232, 200, 122, 0.6);
-    }
-
-    .step-title { font-weight: 600; }
-    .step-desc { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
-
-    .sw-grid,
     .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .sw-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 1rem;
@@ -755,6 +658,12 @@
     .skill-card {
       position: relative;
       overflow: hidden;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      text-align: center;
       transition: border-color 180ms ease, transform 180ms ease;
     }
 
@@ -776,13 +685,28 @@
     }
 
     .skill-card:hover::before { transform: scaleX(1); }
-    .skill-icon { font-size: 1.9rem; margin-bottom: 0.9rem; }
-    .skill-category { color: var(--accent); font-size: 0.7rem; margin-bottom: 0.65rem; }
-    .skill-name { font-family: "Playfair Display", Georgia, serif; font-size: 1.2rem; font-weight: 700; margin-bottom: 1rem; }
+    .skill-icon {
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1rem;
+      border: 6px solid var(--accent);
+      border-radius: 50%;
+      background: rgba(232, 200, 122, 0.92);
+      color: #2a2a28;
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 1.05rem;
+      font-weight: 700;
+      box-shadow: 0 0 0 10px rgba(232, 200, 122, 0.12);
+    }
+    .skill-category { display: none; }
+    .skill-name { font-family: "DM Sans", Arial, sans-serif; font-size: 1.05rem; font-weight: 800; margin-bottom: 1rem; }
 
     .skill-tags {
       display: flex;
       flex-wrap: wrap;
+      justify-content: center;
       gap: 0.45rem;
     }
 
@@ -794,6 +718,10 @@
       color: var(--muted);
       font-family: "DM Mono", Consolas, monospace;
       font-size: 0.72rem;
+    }
+
+    #skills {
+      text-align: center;
     }
 
     footer {
@@ -821,25 +749,15 @@
 
     @media (max-width: 980px) {
       .hero {
-        grid-template-columns: 1fr;
         align-items: end;
         padding-top: 7rem;
-      }
-
-      .hero-visual {
-        min-height: 280px;
-        order: -1;
-      }
-
-      .board {
-        inset: 0 auto auto 0;
-        width: min(100%, 360px);
       }
 
       .summary-grid,
       .resume-layout { grid-template-columns: 1fr; }
 
       .projects-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .skills-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .project-detail { grid-template-columns: 1fr; }
       .project-page-grid { grid-template-columns: 1fr; }
     }
@@ -870,10 +788,13 @@
   <nav aria-label="Primary navigation">
     <a href="#home" class="nav-logo">AT</a>
     <ul class="nav-links">
-      <li><a href="#summary">About</a></li>
+      <li><a href="#summary">About Me</a></li>
+      <li><a href="#internships">Internships</a></li>
       <li><a href="#projects">Projects</a></li>
-      <li><a href="#resume">Resume</a></li>
       <li><a href="#skills">Skills</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#achievements">Achievement</a></li>
+      <li><a href="#pdf">PDF</a></li>
     </ul>
   </nav>
 
@@ -888,19 +809,11 @@
           <a href="mailto:aryan.thakar@hotmail.com" class="btn">Get in Touch</a>
         </div>
       </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="board">
-          <div class="chip">
-            <div class="pin-row pin-top"></div>
-            <div class="pin-row pin-bottom"></div>
-          </div>
-        </div>
-      </div>
     </section>
 
     <section id="summary" class="summary">
-      <p class="section-label">01 - About</p>
-      <h2 class="section-title">A little<br><em>about me</em></h2>
+      <p class="section-label">01 - About Me</p>
+      <h2 class="section-title">About <em>Me</em></h2>
       <div class="summary-grid">
         <div>
           <p class="summary-text">
@@ -909,30 +822,6 @@
             I thrive at the intersection of <strong>embedded systems, robotics, and control theory</strong>, writing low-level drivers one day and tuning sensor fusion algorithms the next. If it has a microcontroller, a motor, or a sensor, I'm interested.
           </p>
 
-          <div class="career-path">
-            <h3>Career Progression</h3>
-            <div class="career-step">
-              <div class="step-dot"></div>
-              <div>
-                <div class="step-title">Embedded Systems Student</div>
-                <div class="step-desc">Learning microcontrollers, protocols, and control theory at Nirma University.</div>
-              </div>
-            </div>
-            <div class="career-step active">
-              <div class="step-dot"></div>
-              <div>
-                <div class="step-title">I am here! - Junior Embedded Engineer Intern</div>
-                <div class="step-desc">Production firmware and AI-vision boards at STEMbotix PVT. LTD.</div>
-              </div>
-            </div>
-            <div class="career-step">
-              <div class="step-dot"></div>
-              <div>
-                <div class="step-title">Robotics / Embedded Systems Engineer</div>
-                <div class="step-desc">Building autonomous systems with full-stack hardware and firmware ownership.</div>
-              </div>
-            </div>
-          </div>
         </div>
 
         <div class="sw-grid">
@@ -956,9 +845,51 @@
       </div>
     </section>
 
+    <section id="internships" class="resume">
+      <p class="section-label">02 - Internships</p>
+      <h2 class="section-title">Internships</h2>
+      <div class="resume-layout">
+        <div class="timeline">
+          <div class="timeline-group-title">STEMbotix PVT. LTD.</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">Dec 2025 - Apr 2026</div>
+              <h3 class="tl-role">Junior Embedded Engineer Intern</h3>
+              <div class="tl-org">STEMbotix PVT. LTD.</div>
+              <ul class="tl-bullets">
+                <li>Developed a production-ready AI-vision expansion board using the Kendryte K210.</li>
+                <li>Modified the Makefile to strip unused MaixPy modules and solve a critical flash constraint.</li>
+                <li>Configured UART, SPI, and I2S peripherals for camera, microphone, LCD, DAC, and amplifier workflows.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-group-title">iCreate</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">May 2025 - Jul 2025</div>
+              <h3 class="tl-role">Summer Intern</h3>
+              <div class="tl-org">iCreate - International Centre for Entrepreneurship & Technology</div>
+              <ul class="tl-bullets">
+                <li>Engineered a two-phase onboard controller for an underwater robot.</li>
+                <li>Modified BlueOS to transmit H.264 video packets over RS485 alongside IMU and pressure telemetry.</li>
+                <li>Developed bare-metal C and Assembly firmware for STM32F411 with a Python GUI for live telemetry and control.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
-      <p class="section-label">02 - Work</p>
-      <h2 class="section-title">Selected<br><em>Projects</em></h2>
+      <p class="section-label">03 - Projects</p>
+      <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
         <a class="project-card" href="#/projects/ai-vision-expansion-board-k210">
           <div class="project-thumb">01</div>
@@ -1048,98 +979,12 @@
       </div>
     </section>
 
-    <section id="resume" class="resume">
-      <p class="section-label">03 - Experience</p>
-      <h2 class="section-title">Resume &<br><em>Education</em></h2>
-      <div class="resume-layout">
-        <div class="timeline">
-          <div class="timeline-group-title">Work Experience</div>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
-            <div>
-              <div class="tl-date">Dec 2025 - Apr 2026</div>
-              <h3 class="tl-role">Junior Embedded Engineer Intern</h3>
-              <div class="tl-org">STEMbotix PVT. LTD.</div>
-              <ul class="tl-bullets">
-                <li>Developed a production-ready AI-vision expansion board using the Kendryte K210.</li>
-                <li>Modified the Makefile to strip unused MaixPy modules and solve a critical flash constraint.</li>
-                <li>Configured UART, SPI, and I2S peripherals for camera, microphone, LCD, DAC, and amplifier workflows.</li>
-              </ul>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
-            <div>
-              <div class="tl-date">May 2025 - Jul 2025</div>
-              <h3 class="tl-role">Summer Intern</h3>
-              <div class="tl-org">iCreate - International Centre for Entrepreneurship & Technology</div>
-              <ul class="tl-bullets">
-                <li>Engineered a two-phase onboard controller for an underwater robot.</li>
-                <li>Modified BlueOS to transmit H.264 video packets over RS485 alongside IMU and pressure telemetry.</li>
-                <li>Developed bare-metal C and Assembly firmware for STM32F411 with a Python GUI for live telemetry and control.</li>
-              </ul>
-            </div>
-          </article>
-
-          <a href="resume.pdf" class="btn resume-download">Download Resume PDF</a>
-        </div>
-
-        <div class="timeline">
-          <div class="timeline-group-title">Education</div>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div></div>
-            <div>
-              <div class="tl-date">Sep 2022 - Jun 2026</div>
-              <h3 class="tl-role">B.Tech - Electronics & Instrumentation Engineering</h3>
-              <div class="tl-org">Nirma University, Institute of Technology / Ahmedabad, India</div>
-              <ul class="tl-bullets">
-                <li>CGPA: 7.68</li>
-                <li>Coursework: Control Theory, Signals & Systems, Robotics, STM32 Embedded System Design, Fuzzy Control Theory, and Data Communication.</li>
-              </ul>
-            </div>
-          </article>
-
-          <div class="timeline-group-title" style="margin-top: 2.5rem;">Achievements</div>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
-            <div>
-              <div class="tl-date">2024</div>
-              <h3 class="tl-role">Runners-up - Secure Meters' Vikram Awards</h3>
-              <div class="tl-org">Industry Recognition</div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
-            <div>
-              <div class="tl-date">2024</div>
-              <h3 class="tl-role">Runners-up - Open Automation Challenge 2024</h3>
-              <div class="tl-org">Competition</div>
-            </div>
-          </article>
-
-          <article class="timeline-item">
-            <div class="tl-line"><div class="tl-dot"></div></div>
-            <div>
-              <div class="tl-date">2025</div>
-              <h3 class="tl-role">Publication - Springer Nature</h3>
-              <div class="tl-org">Recent Advances in Materials and Manufacturing Science</div>
-              <ul class="tl-bullets">
-                <li>"A Sustainable Approach for Plastic Waste Management and Recycling."</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="skills">
-      <p class="section-label">04 - Expertise</p>
-      <h2 class="section-title">Skills &<br><em>Toolbox</em></h2>
+      <p class="section-label">04 - Skills</p>
+      <h2 class="section-title">Skills</h2>
+      <p class="summary-text" style="max-width: 980px; margin: -1.5rem auto 3rem; text-align: center;">
+        How do I turn ideas into reality? With these skills. This is a toolbox I have built through hands-on projects and engineering study, and I am excited to keep adding more.
+      </p>
       <div class="skills-grid">
         <article class="skill-card">
           <div class="skill-icon" aria-hidden="true">IC</div>
@@ -1198,6 +1043,82 @@
           </div>
         </article>
       </div>
+    </section>
+
+    <section id="education" class="education">
+      <p class="section-label">05 - Education</p>
+      <h2 class="section-title">Education</h2>
+      <div class="resume-layout">
+        <div class="timeline">
+          <div class="timeline-group-title">University</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-date">Sep 2022 - Jun 2026</div>
+              <h3 class="tl-role">B.Tech - Electronics & Instrumentation Engineering</h3>
+              <div class="tl-org">Nirma University, Institute of Technology / Ahmedabad, India</div>
+              <ul class="tl-bullets">
+                <li>CGPA: 7.68</li>
+                <li>Coursework: Control Theory, Signals & Systems, Robotics, STM32 Embedded System Design, Fuzzy Control Theory, and Data Communication.</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <p class="section-label">06 - Achievement</p>
+      <h2 class="section-title">Achievement</h2>
+      <div class="resume-layout">
+        <div class="timeline">
+          <div class="timeline-group-title">Recognition</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div><div class="tl-line-bar"></div></div>
+            <div>
+              <div class="tl-date">2024</div>
+              <h3 class="tl-role">Runners-up - Secure Meters' Vikram Awards</h3>
+              <div class="tl-org">Industry Recognition</div>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-date">2024</div>
+              <h3 class="tl-role">Runners-up - Open Automation Challenge 2024</h3>
+              <div class="tl-org">Competition</div>
+            </div>
+          </article>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-group-title">Publication</div>
+
+          <article class="timeline-item">
+            <div class="tl-line"><div class="tl-dot"></div></div>
+            <div>
+              <div class="tl-date">2025</div>
+              <h3 class="tl-role">Publication - Springer Nature</h3>
+              <div class="tl-org">Recent Advances in Materials and Manufacturing Science</div>
+              <ul class="tl-bullets">
+                <li>"A Sustainable Approach for Plastic Waste Management and Recycling."</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="pdf" class="pdf-section">
+      <p class="section-label">07 - PDF</p>
+      <h2 class="section-title">PDF</h2>
+      <p class="summary-text" style="max-width: 700px; margin-bottom: 2rem;">
+        Prefer the formal version? Download the latest resume PDF with education, internships, skills, and project highlights.
+      </p>
+      <a href="resume.pdf" class="btn btn-primary resume-download">Download Resume PDF</a>
     </section>
   </main>
 
