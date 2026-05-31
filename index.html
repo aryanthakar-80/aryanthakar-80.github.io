@@ -366,33 +366,23 @@
       inset: 0;
       display: grid;
       place-items: center;
-      color: rgba(243, 239, 231, 0.2);
-      font-family: "Playfair Display", Georgia, serif;
-      font-size: 4.8rem;
-      font-weight: 900;
+      background-position: center;
+      background-size: cover;
       transition: transform 320ms ease, filter 320ms ease;
     }
 
-    .project-thumb::before,
-    .project-thumb::after {
+    .project-thumb::before {
       content: "";
       position: absolute;
-      inset: 16%;
-      border: 1px solid rgba(232, 200, 122, 0.18);
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(8, 8, 10, 0.05), rgba(8, 8, 10, 0.55));
     }
 
-    .project-thumb::after {
-      inset: 28% 18%;
-      border-style: dashed;
-      transform: rotate(-8deg);
-    }
-
-    .project-card:nth-child(1) .project-thumb { background: linear-gradient(135deg, #1a1d26, #243438); }
-    .project-card:nth-child(2) .project-thumb { background: linear-gradient(135deg, #171c23, #273140); }
-    .project-card:nth-child(3) .project-thumb { background: linear-gradient(135deg, #161d1c, #26342f); }
-    .project-card:nth-child(4) .project-thumb { background: linear-gradient(135deg, #1f1824, #31233c); }
-    .project-card:nth-child(5) .project-thumb { background: linear-gradient(135deg, #201b18, #3b3022); }
-    .project-card:nth-child(6) .project-thumb { background: linear-gradient(135deg, #181d1e, #2c3338); }
+    .project-card:nth-child(1) .project-thumb { background-image: url("assets/projects/k210/fwd.jpg"); }
+    .project-card:nth-child(2) .project-thumb { background-image: url("assets/projects/underwater-robot/auv2.jpg"); }
+    .project-card:nth-child(3) .project-thumb { background-image: url("assets/projects/localisation/fuss.jpg"); }
+    .project-card:nth-child(4) .project-thumb { background-image: url("assets/projects/hexapod/hex5.jpg"); }
+    .project-card:nth-child(5) .project-thumb { background-image: url("assets/projects/pic-control/pd2.jpg"); }
 
     .project-overlay {
       position: relative;
@@ -1007,7 +997,7 @@
       <h2 class="section-title">Projects</h2>
       <div class="projects-grid">
         <a class="project-card" href="#/projects/ai-vision-expansion-board-k210">
-          <div class="project-thumb">01</div>
+          <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-overlay">
             <div class="project-num">Project 01 / 2025</div>
             <h3 class="project-title">AI-Vision Expansion Board (K210)</h3>
@@ -1017,7 +1007,7 @@
         </a>
 
         <a class="project-card" href="#/projects/underwater-robot-controller">
-          <div class="project-thumb">02</div>
+          <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-overlay">
             <div class="project-num">Project 02 / 2025</div>
             <h3 class="project-title">Underwater Robot Controller</h3>
@@ -1027,7 +1017,7 @@
         </a>
 
         <a class="project-card" href="#/projects/sensor-fusion-localisation">
-          <div class="project-thumb">03</div>
+          <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-overlay">
             <div class="project-num">Project 03 / 2025</div>
             <h3 class="project-title">Sensor Fusion for Real-Time Localisation</h3>
@@ -1037,7 +1027,7 @@
         </a>
 
         <a class="project-card" href="#/projects/autonomous-hexapod-robot">
-          <div class="project-thumb">04</div>
+          <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-overlay">
             <div class="project-num">Project 04 / 2024</div>
             <h3 class="project-title">Autonomous Hexapod Robot</h3>
@@ -1047,7 +1037,7 @@
         </a>
 
         <a class="project-card" href="#/projects/pd-control-pic-microcontroller">
-          <div class="project-thumb">05</div>
+          <div class="project-thumb" aria-hidden="true"></div>
           <div class="project-overlay">
             <div class="project-num">Project 05 / 2023</div>
             <h3 class="project-title">PD Control on PIC Microcontroller</h3>
@@ -1056,15 +1046,6 @@
           </div>
         </a>
 
-        <a class="project-card" href="#/projects/next-embedded-project">
-          <div class="project-thumb">06</div>
-          <div class="project-overlay">
-            <div class="project-num">Project 06 / Coming Soon</div>
-            <h3 class="project-title">Next Embedded Project</h3>
-            <p class="project-desc">A placeholder slot for the next public case study. Replace this with a repo link, demo video, or write-up when the project is ready.</p>
-            <span class="project-link">View Details</span>
-          </div>
-        </a>
       </div>
     </section>
 
@@ -1349,19 +1330,6 @@
           { type: "image", src: "assets/projects/pic-control/pd1.jpg", alt: "PIC control circuit" },
           { type: "image", src: "assets/projects/pic-control/pd2.jpg", alt: "Oscilloscope validation" }
         ]
-      },
-      "next-embedded-project": {
-        title: "Next Embedded Project",
-        meta: "Project 06 / Coming Soon",
-        summary: "Use this slot for your next polished project write-up, demo video, or hardware case study.",
-        built: [
-          "Replace this placeholder with the core problem you solved.",
-          "Add the technical decisions that make the project interesting.",
-          "Show photos, test data, diagrams, or a short demo video."
-        ],
-        tools: ["Add tools here"],
-        outcome: "Replace this with the real outcome, result, or lesson learned.",
-        media: []
       }
     };
 
