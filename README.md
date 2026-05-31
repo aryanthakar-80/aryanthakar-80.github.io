@@ -2,7 +2,7 @@
 
 This repository hosts my engineering portfolio, focused on embedded systems, robotics, firmware, control systems, and hardware-oriented product development.
 
-I am an Electronics & Instrumentation Engineering student at Nirma University with hands-on experience building real-world embedded systems across microcontrollers, sensors, communication protocols, robotics platforms, and AI-enabled hardware.
+I am an Electronics & Instrumentation Engineering student at Nirma University with practical experience building real-world embedded systems across microcontrollers, sensors, communication protocols, robotics platforms, and AI-enabled hardware.
 
 My work includes projects such as an AI-vision expansion board using the Kendryte K210, an underwater robot controller, real-time localisation through sensor fusion, an autonomous hexapod robot, and PD control implementation on a PIC microcontroller.
 
