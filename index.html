@@ -773,6 +773,51 @@
       text-align: center;
     }
 
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1.5rem, 6vw, 4rem);
+      align-items: start;
+      text-align: center;
+    }
+
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .contact-icon {
+      width: 112px;
+      height: 112px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1rem;
+      border: 6px solid var(--accent);
+      border-radius: 50%;
+      background: rgba(232, 200, 122, 0.92);
+      color: #2a2a28;
+      font-family: "DM Mono", Consolas, monospace;
+      font-size: 1.65rem;
+      font-weight: 900;
+      box-shadow: 0 0 0 10px rgba(232, 200, 122, 0.12);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .contact-card:hover .contact-icon,
+    .contact-card:focus-visible .contact-icon {
+      transform: translateY(-2px);
+      box-shadow: 0 0 0 10px rgba(232, 200, 122, 0.18), 0 16px 40px rgba(0, 0, 0, 0.24);
+    }
+
+    .contact-label {
+      color: var(--text);
+      font-size: 1.05rem;
+      font-weight: 800;
+    }
+
     footer {
       padding: 2rem clamp(1.2rem, 4vw, 4rem);
       border-top: 1px solid var(--border);
@@ -824,7 +869,8 @@
 
       .sw-grid,
       .skills-grid,
-      .projects-grid { grid-template-columns: 1fr; }
+      .projects-grid,
+      .contact-grid { grid-template-columns: 1fr; }
 
       .project-card { min-height: 315px; }
       .project-overlay { transform: translateY(0); }
@@ -843,7 +889,8 @@
       <li><a href="#skills">Skills</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#achievements">Achievement</a></li>
-      <li><a href="#pdf">PDF</a></li>
+      <li><a href="#resume">Resume</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
@@ -1167,13 +1214,31 @@
       </div>
     </section>
 
-    <section id="pdf" class="pdf-section">
-      <p class="section-label">07 - PDF</p>
-      <h2 class="section-title">PDF</h2>
-      <p class="summary-text" style="max-width: 700px; margin-bottom: 2rem;">
-        Prefer the formal version? Download the latest resume PDF with education, internships, skills, and project highlights.
-      </p>
+    <section id="resume" class="pdf-section">
+      <p class="section-label">07 - Resume</p>
+      <h2 class="section-title">Resume</h2>
       <a href="resume.pdf" class="btn btn-primary resume-download">Download Resume PDF</a>
+    </section>
+
+    <section id="contact">
+      <p class="section-label">08 - Contact</p>
+      <h2 class="section-title">Contact</h2>
+      <div class="contact-grid">
+        <div class="contact-card">
+          <div class="contact-icon" aria-hidden="true">PIN</div>
+          <div class="contact-label">Ahmedabad, Gujarat</div>
+        </div>
+
+        <a class="contact-card" href="mailto:aryan.thakar@hotmail.com">
+          <div class="contact-icon" aria-hidden="true">@</div>
+          <div class="contact-label">aryan.thakar@hotmail.com</div>
+        </a>
+
+        <a class="contact-card" href="https://linkedin.com/in/aryan-thakar-88812a257" target="_blank" rel="noreferrer">
+          <div class="contact-icon" aria-hidden="true">in</div>
+          <div class="contact-label">Aryan Thakar</div>
+        </a>
+      </div>
     </section>
   </main>
 
