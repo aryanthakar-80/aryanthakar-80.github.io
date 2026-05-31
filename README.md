@@ -6,6 +6,7 @@ Static portfolio site for GitHub Pages.
 
 - `index.html` - main portfolio page
 - `resume.pdf` - optional resume file; add this if you want the resume download button to work
+- `assets/hero/` - home page background slideshow media
 - `assets/projects/` - project photos and videos used by the project detail links
 
 ## Publish on GitHub Pages
@@ -31,6 +32,18 @@ Each project card uses a shareable hash link, similar to `#/projects/motor-perfo
 - `#/projects/next-embedded-project`
 
 ## Adding Photos and Videos
+
+### Home page background slideshow
+
+Place hero media here:
+
+- `assets/hero/hero-video.mp4`
+- `assets/hero/hero-1.jpg`
+- `assets/hero/hero-2.jpg`
+
+The home page will fade between these media items behind the centered title. If you want different filenames, edit the `<div class="hero-media">` block in `index.html`.
+
+### Project detail pages
 
 Place your media files in the matching folder:
 
