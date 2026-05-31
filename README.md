@@ -5,7 +5,7 @@ Static portfolio site for GitHub Pages.
 ## Files
 
 - `index.html` - main portfolio page
-- `resume.pdf` - optional resume file; add this if you want the resume download button to work
+- `resume.pdf` - resume file used by the Resume section download button
 - `assets/hero/` - home page background slideshow media
 - `assets/projects/` - project photos and videos used by the project detail links
 

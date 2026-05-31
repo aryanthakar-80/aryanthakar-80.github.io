@@ -139,16 +139,17 @@
       object-fit: cover;
       opacity: 0;
       filter: saturate(0.88) contrast(1.05);
-      animation: heroSlideshow 18s infinite;
+      animation: heroSlideshow 36s infinite;
     }
 
     .hero-slide:nth-child(2) { animation-delay: 6s; }
     .hero-slide:nth-child(3) { animation-delay: 12s; }
+    .hero-slide:nth-child(4) { animation-delay: 18s; }
 
     @keyframes heroSlideshow {
       0%, 8% { opacity: 0; transform: scale(1.02); }
-      12%, 31% { opacity: 1; transform: scale(1); }
-      38%, 100% { opacity: 0; transform: scale(1.03); }
+      10%, 16% { opacity: 1; transform: scale(1); }
+      18%, 100% { opacity: 0; transform: scale(1.03); }
     }
 
     .hero-content {
@@ -501,7 +502,7 @@
 
     .media-gallery {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 0.75rem;
     }
 
@@ -510,7 +511,7 @@
       display: grid;
       place-items: center;
       padding: 1rem;
-      border: 1px dashed rgba(232, 200, 122, 0.32);
+      border: 0;
       border-radius: 6px;
       background:
         linear-gradient(135deg, rgba(232, 200, 122, 0.08), rgba(201, 125, 78, 0.06)),
@@ -538,7 +539,7 @@
       display: block;
       object-fit: cover;
       border-radius: 6px;
-      border: 1px solid var(--border);
+      border: 0;
       background: var(--surface-2);
     }
 
@@ -910,11 +911,10 @@
   <main>
     <section id="home" class="hero">
       <div class="hero-media" aria-hidden="true">
-        <video class="hero-slide" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none'">
-          <source src="assets/hero/hero-video.mp4" type="video/mp4" />
-        </video>
         <img class="hero-slide" src="assets/hero/hero-1.jpg" alt="" onerror="this.style.display='none'" />
+        <img class="hero-slide" src="assets/hero/fuss.jpg" alt="" onerror="this.style.display='none'" />
         <img class="hero-slide" src="assets/hero/hero-2.jpg" alt="" onerror="this.style.display='none'" />
+        <img class="hero-slide" src="assets/hero/qr.png" alt="" onerror="this.style.display='none'" />
       </div>
       <div class="hero-content">
         <h1>Aryan Thakar</h1>
@@ -1278,9 +1278,11 @@
         tools: ["Kendryte K210", "MaixPy", "C", "UART", "SPI", "I2S", "Firmware build system"],
         outcome: "The board was handed off as a working AI-vision module, with firmware size constraints solved and core detection flows validated.",
         media: [
-          { type: "image", src: "assets/projects/k210/board-photo.jpg", alt: "K210 expansion board photo" },
-          { type: "image", src: "assets/projects/k210/firmware-test.jpg", alt: "Firmware testing setup" },
-          { type: "video", src: "assets/projects/k210/demo.mp4", alt: "K210 detection demo" }
+          { type: "image", src: "assets/projects/k210/digit.jpg", alt: "Digit recognition output" },
+          { type: "image", src: "assets/projects/k210/fwd.jpg", alt: "Forward motion test" },
+          { type: "image", src: "assets/projects/k210/maixblock.png", alt: "MaixBlock workflow" },
+          { type: "image", src: "assets/projects/k210/object.jpg", alt: "Object detection output" },
+          { type: "image", src: "assets/projects/k210/qr.png", alt: "QR detection output" }
         ]
       },
       "underwater-robot-controller": {
@@ -1295,9 +1297,7 @@
         tools: ["Raspberry Pi 4B", "BlueOS", "STM32F411", "C", "Assembly", "Python", "RS485", "PWM", "UART"],
         outcome: "The controller architecture supported both video/telemetry experiments and a lean STM32 firmware path for real-time embedded control.",
         media: [
-          { type: "image", src: "assets/projects/underwater-robot/controller.jpg", alt: "Underwater robot controller hardware" },
-          { type: "image", src: "assets/projects/underwater-robot/gui.jpg", alt: "Python control GUI" },
-          { type: "video", src: "assets/projects/underwater-robot/test-run.mp4", alt: "Underwater robot test video" }
+          { type: "image", src: "assets/projects/underwater-robot/auv2.jpg", alt: "Underwater robot hardware setup" }
         ]
       },
       "sensor-fusion-localisation": {
@@ -1312,9 +1312,8 @@
         tools: ["BNO055", "Wheel encoders", "C++", "Python", "EKF", "Robotics testing"],
         outcome: "The system improved localisation visibility and created a repeatable test workflow for sensor fusion experiments.",
         media: [
-          { type: "image", src: "assets/projects/localisation/robot.jpg", alt: "Localisation robot platform" },
-          { type: "image", src: "assets/projects/localisation/visualisation.jpg", alt: "State visualisation screenshot" },
-          { type: "video", src: "assets/projects/localisation/demo.mp4", alt: "Localisation demo video" }
+          { type: "image", src: "assets/projects/localisation/fuss.jpg", alt: "Localisation robot platform" },
+          { type: "image", src: "assets/projects/localisation/fuss2.jpg", alt: "Localisation test setup" }
         ]
       },
       "autonomous-hexapod-robot": {
@@ -1329,9 +1328,10 @@
         tools: ["Raspberry Pi", "Servo control", "WiFi", "IMU", "2D LiDAR", "Python"],
         outcome: "The project won a Rs. 2,50,000 staged grant across three phases and demonstrated a working legged robotics prototype.",
         media: [
-          { type: "image", src: "assets/projects/hexapod/robot.jpg", alt: "Autonomous hexapod robot" },
-          { type: "image", src: "assets/projects/hexapod/lidar.jpg", alt: "LiDAR streaming view" },
-          { type: "video", src: "assets/projects/hexapod/walking-demo.mp4", alt: "Hexapod walking demo" }
+          { type: "image", src: "assets/projects/hexapod/hex1.png", alt: "Autonomous hexapod robot" },
+          { type: "image", src: "assets/projects/hexapod/hex2.jpg", alt: "Hexapod prototype view" },
+          { type: "image", src: "assets/projects/hexapod/hex3.jpg", alt: "Hexapod electronics setup" },
+          { type: "image", src: "assets/projects/hexapod/hex5.jpg", alt: "Hexapod final build" }
         ]
       },
       "pd-control-pic-microcontroller": {
@@ -1346,9 +1346,8 @@
         tools: ["PIC18F", "MPLAB", "C", "Oscilloscope", "Control theory"],
         outcome: "The project translated classroom control theory into measured embedded behavior on real hardware.",
         media: [
-          { type: "image", src: "assets/projects/pic-control/circuit.jpg", alt: "PIC control circuit" },
-          { type: "image", src: "assets/projects/pic-control/scope.jpg", alt: "Oscilloscope validation" },
-          { type: "video", src: "assets/projects/pic-control/demo.mp4", alt: "PD controller demo" }
+          { type: "image", src: "assets/projects/pic-control/pd1.jpg", alt: "PIC control circuit" },
+          { type: "image", src: "assets/projects/pic-control/pd2.jpg", alt: "Oscilloscope validation" }
         ]
       },
       "next-embedded-project": {
@@ -1362,11 +1361,7 @@
         ],
         tools: ["Add tools here"],
         outcome: "Replace this with the real outcome, result, or lesson learned.",
-        media: [
-          { type: "image", src: "assets/projects/next/photo-1.jpg", alt: "Project photo placeholder" },
-          { type: "image", src: "assets/projects/next/photo-2.jpg", alt: "Project photo placeholder" },
-          { type: "video", src: "assets/projects/next/demo.mp4", alt: "Project video placeholder" }
-        ]
+        media: []
       }
     };
 
@@ -1383,13 +1378,8 @@
       return items.map((item) => `<li>${item}</li>`).join("");
     }
 
-    function mediaMarkup(item, index) {
-      const wide = index === 2 ? " wide" : "";
-      if (item.type === "video") {
-        return `<video class="${wide.trim()}" controls preload="metadata" poster="${item.poster || ""}"><source src="${item.src}" type="video/mp4" />Video: ${item.alt}</video>`;
-      }
-
-      return `<img src="${item.src}" alt="${item.alt}" onerror="this.outerHTML='<div class=&quot;media-slot${wide}&quot;>${item.alt}<br>${item.src}</div>'" />`;
+    function mediaMarkup(item) {
+      return `<img src="${item.src}" alt="${item.alt}" onerror="this.style.display='none'" />`;
     }
 
     function openProject(slug) {
