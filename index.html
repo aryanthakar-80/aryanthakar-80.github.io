@@ -687,6 +687,14 @@
       font-size: 0.86rem;
     }
 
+    .publication-link { text-decoration: none; }
+    .publication-link:hover { text-decoration: underline; }
+    .publication-link:focus-visible {
+      text-decoration: underline;
+      outline: 2px solid currentColor;
+      outline-offset: 2px;
+    }
+
     .tl-bullets li::before {
       content: "-";
       position: absolute;
@@ -1236,7 +1244,7 @@
               <h3 class="tl-role">Publication - Springer Nature</h3>
               <div class="tl-org">Recent Advances in Materials and Manufacturing Science</div>
               <ul class="tl-bullets">
-                <li>"A Sustainable Approach for Plastic Waste Management and Recycling."</li>
+                <li><a class="publication-link" href="https://link.springer.com/chapter/10.1007/978-981-95-0063-5_38">"A Sustainable Approach for Plastic Waste Management and Recycling."</a></li>
               </ul>
             </div>
           </article>
